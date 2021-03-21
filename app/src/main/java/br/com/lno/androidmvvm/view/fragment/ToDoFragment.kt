@@ -5,13 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
 import br.com.lno.androidmvvm.databinding.FragmentDataBinding
-import br.com.lno.androidmvvm.view.adapter.DataAdapter
-import br.com.lno.androidmvvm.viewmodel.DataViewModel
+import br.com.lno.androidmvvm.view.adapter.ToDoAdapter
+import br.com.lno.androidmvvm.viewmodel.ToDoViewModel
 
-class DataFragment : Fragment() {
+class ToDoFragment : Fragment() {
 
-    private val dataViewModel = DataViewModel()
+    private val dataViewModel = ToDoViewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -24,10 +25,13 @@ class DataFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = dataViewModel
 
-        binding.rvData.adapter = DataAdapter(listOf())
+        binding.rvData.adapter = ToDoAdapter(listOf())
+        binding.rvData.addItemDecoration(
+            DividerItemDecoration(activity, DividerItemDecoration.VERTICAL)
+        )
 
         dataViewModel.items.observe(this, {
-            (binding.rvData.adapter as DataAdapter).items = it
+            (binding.rvData.adapter as ToDoAdapter).items = it
         })
 
         return binding.root

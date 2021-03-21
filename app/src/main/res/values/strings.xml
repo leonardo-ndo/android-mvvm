@@ -2,4 +2,6 @@
     <string name="app_name">AndroidMVVM</string>
     <string name="loading">Loading</string>
     <string name="reload">Reload</string>
+    <string name="description_todo_completed">%s completed</string>
+    <string name="description_todo_not_completed">%s not completed</string>
 </resources>

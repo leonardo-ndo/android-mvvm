@@ -3,10 +3,10 @@ package br.com.lno.androidmvvm.view.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import br.com.lno.androidmvvm.databinding.ItemDataBinding
-import br.com.lno.androidmvvm.model.Data
+import br.com.lno.androidmvvm.databinding.ItemTodoBinding
+import br.com.lno.androidmvvm.model.ToDo
 
-class DataAdapter(items: List<Data>) : RecyclerView.Adapter<DataAdapter.ViewHolder>() {
+class ToDoAdapter(items: List<ToDo>) : RecyclerView.Adapter<ToDoAdapter.ViewHolder>() {
 
     var items = items
         set(value) {
@@ -16,7 +16,7 @@ class DataAdapter(items: List<Data>) : RecyclerView.Adapter<DataAdapter.ViewHold
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
-            ItemDataBinding.inflate(
+            ItemTodoBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -30,10 +30,10 @@ class DataAdapter(items: List<Data>) : RecyclerView.Adapter<DataAdapter.ViewHold
 
     override fun getItemCount() = items.size
 
-    class ViewHolder(private val binding: ItemDataBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(private val binding: ItemTodoBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: Data) {
-            binding.data = item
+        fun bind(item: ToDo) {
+            binding.toDo = item
             binding.executePendingBindings()
         }
     }
