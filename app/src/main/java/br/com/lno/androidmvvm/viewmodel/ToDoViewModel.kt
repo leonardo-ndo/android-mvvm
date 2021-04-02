@@ -4,11 +4,11 @@ import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableInt
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-
 import br.com.lno.androidmvvm.R
 import br.com.lno.androidmvvm.model.ToDo
 import br.com.lno.androidmvvm.model.retrofit.ToDoService
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class ToDoViewModel : ViewModel() {
@@ -20,12 +20,10 @@ class ToDoViewModel : ViewModel() {
 
     var items = MutableLiveData<List<ToDo>>()
 
-    private var toDoService = ToDoService()
-
     fun loadItems() {
         setLoading(true)
-        viewModelScope.launch {
-            val toDoResponse = toDoService.getToDos()
+        CoroutineScope(Dispatchers.IO).launch {
+            val toDoResponse = ToDoService.getToDos()
             if (toDoResponse.isSuccessful) {
                 items.postValue(toDoResponse.body())
             }

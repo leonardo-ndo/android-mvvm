@@ -12,7 +12,7 @@ import br.com.lno.androidmvvm.viewmodel.ToDoViewModel
 
 class ToDoFragment : Fragment() {
 
-    private val dataViewModel = ToDoViewModel()
+    private val dataViewModel by lazy { ToDoViewModel() }
 
     override fun onCreateView(
         inflater: LayoutInflater,

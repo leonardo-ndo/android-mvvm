@@ -1,8 +1,8 @@
 package br.com.lno.androidmvvm.model.retrofit
 
-class ToDoService {
+object ToDoService {
 
-    private val toDoApi: ToDoAPI = RetrofitConfig.retrofit.create(ToDoAPI::class.java)
+    private val toDoApi = RetrofitConfig.retrofit.create(ToDoAPI::class.java)
 
     suspend fun getToDos() = toDoApi.toDo()
 
