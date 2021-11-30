@@ -10,5 +10,6 @@ The app makes a call, via Retrofit, to https://jsonplaceholder.typicode.com/todo
 * MVVM
 * Retrofit
 * Data Binding
+* Coroutines
 
 Have fun!
