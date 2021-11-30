@@ -2,17 +2,13 @@ package br.com.lno.androidmvvm.view.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import br.com.lno.androidmvvm.databinding.ItemTodoBinding
 import br.com.lno.androidmvvm.model.ToDo
 
-class ToDoAdapter(items: List<ToDo>) : RecyclerView.Adapter<ToDoAdapter.ViewHolder>() {
-
-    var items = items
-        set(value) {
-            field = value
-            notifyDataSetChanged()
-        }
+class ToDoAdapter : ListAdapter<ToDo, ToDoAdapter.ViewHolder>(Diff) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -25,16 +21,24 @@ class ToDoAdapter(items: List<ToDo>) : RecyclerView.Adapter<ToDoAdapter.ViewHold
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(items[position])
+        holder.bind(getItem(position))
     }
 
-    override fun getItemCount() = items.size
+    object Diff : DiffUtil.ItemCallback<ToDo>() {
+
+        override fun areItemsTheSame(oldItem: ToDo, newItem: ToDo): Boolean {
+            return oldItem.id == newItem.id
+        }
+
+        override fun areContentsTheSame(oldItem: ToDo, newItem: ToDo): Boolean {
+            return oldItem == newItem
+        }
+    }
 
     class ViewHolder(private val binding: ItemTodoBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: ToDo) {
             binding.toDo = item
-            binding.executePendingBindings()
         }
     }
 }

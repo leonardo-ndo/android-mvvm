@@ -15,9 +15,9 @@ class ToDoFragment : Fragment() {
     private val dataViewModel by lazy { ToDoViewModel() }
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
 
         val binding = FragmentDataBinding.inflate(inflater, container, false)
@@ -25,13 +25,15 @@ class ToDoFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = dataViewModel
 
-        binding.rvData.adapter = ToDoAdapter(listOf())
+        val toDoAdapter = ToDoAdapter()
+
+        binding.rvData.adapter = toDoAdapter
         binding.rvData.addItemDecoration(
-                DividerItemDecoration(activity, DividerItemDecoration.VERTICAL)
+            DividerItemDecoration(activity, DividerItemDecoration.VERTICAL)
         )
 
         dataViewModel.items.observe(viewLifecycleOwner, {
-            (binding.rvData.adapter as ToDoAdapter).items = it
+            toDoAdapter.submitList(it)
         })
 
         return binding.root
