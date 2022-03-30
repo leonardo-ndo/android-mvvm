@@ -2,10 +2,9 @@ package br.com.lno.androidmvvm.model.retrofit
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-object ToDoService {
-
-    private val toDoApi = RetrofitConfig.retrofit.create(ToDoAPI::class.java)
+class ToDoService @Inject constructor(private val toDoApi: ToDoAPI) {
 
     /**
      * Gets the To Do list from the api.

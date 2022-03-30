@@ -11,5 +11,6 @@ The app makes a call, via Retrofit, to https://jsonplaceholder.typicode.com/todo
 * Retrofit
 * Data Binding
 * Coroutines
+* Hilt
 
 Have fun!
