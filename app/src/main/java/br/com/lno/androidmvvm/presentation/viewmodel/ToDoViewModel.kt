@@ -1,19 +1,25 @@
-package br.com.lno.androidmvvm.viewmodel
+package br.com.lno.androidmvvm.presentation.viewmodel
 
+import android.content.Context
+import android.widget.Toast
 import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableInt
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import br.com.lno.androidmvvm.R
-import br.com.lno.androidmvvm.model.ToDo
-import br.com.lno.androidmvvm.model.retrofit.ToDoService
+import br.com.lno.androidmvvm.domain.model.ToDo
+import br.com.lno.androidmvvm.domain.repository.ToDoRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ToDoViewModel @Inject constructor(private val toDoService: ToDoService) : ViewModel() {
+class ToDoViewModel @Inject constructor(
+    @ApplicationContext private val context: Context,
+    private val toDoRepository: ToDoRepository
+) : ViewModel() {
 
     var reloadButtonEnabled = ObservableBoolean(false)
     var reloadButtonText = ObservableInt(R.string.loading)
@@ -29,9 +35,10 @@ class ToDoViewModel @Inject constructor(private val toDoService: ToDoService) : 
          */
         viewModelScope.launch {
             setLoading(true)
-            val toDoResponse = toDoService.getToDos()
-            if (toDoResponse.isSuccessful) {
-                items.postValue(toDoResponse.body())
+            try {
+                items.postValue(toDoRepository.getToDos())
+            } catch (e: Exception) {
+                Toast.makeText(context, R.string.error, Toast.LENGTH_LONG).show()
             }
             setLoading(false)
         }

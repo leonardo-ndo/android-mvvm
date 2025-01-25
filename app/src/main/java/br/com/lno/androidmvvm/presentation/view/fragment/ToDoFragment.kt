@@ -1,4 +1,4 @@
-package br.com.lno.androidmvvm.view.fragment
+package br.com.lno.androidmvvm.presentation.view.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,8 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import br.com.lno.androidmvvm.databinding.FragmentDataBinding
-import br.com.lno.androidmvvm.view.adapter.ToDoAdapter
-import br.com.lno.androidmvvm.viewmodel.ToDoViewModel
+import br.com.lno.androidmvvm.presentation.view.adapter.ToDoAdapter
+import br.com.lno.androidmvvm.presentation.viewmodel.ToDoViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

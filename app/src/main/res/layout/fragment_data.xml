@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="br.com.lno.androidmvvm.viewmodel.ToDoViewModel" />
+            type="br.com.lno.androidmvvm.presentation.viewmodel.ToDoViewModel" />
 
         <import type="android.view.View" />
     </data>

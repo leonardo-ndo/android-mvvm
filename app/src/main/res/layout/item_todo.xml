@@ -7,7 +7,7 @@
 
         <variable
             name="toDo"
-            type="br.com.lno.androidmvvm.model.ToDo" />
+            type="br.com.lno.androidmvvm.domain.model.ToDo" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

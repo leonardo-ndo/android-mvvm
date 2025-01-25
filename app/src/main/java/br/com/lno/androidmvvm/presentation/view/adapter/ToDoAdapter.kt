@@ -1,4 +1,4 @@
-package br.com.lno.androidmvvm.view.adapter
+package br.com.lno.androidmvvm.presentation.view.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import br.com.lno.androidmvvm.databinding.ItemTodoBinding
-import br.com.lno.androidmvvm.model.ToDo
+import br.com.lno.androidmvvm.domain.model.ToDo
 
 class ToDoAdapter : ListAdapter<ToDo, ToDoAdapter.ViewHolder>(Diff) {
 

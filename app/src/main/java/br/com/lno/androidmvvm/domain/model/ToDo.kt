@@ -1,4 +1,4 @@
-package br.com.lno.androidmvvm.model
+package br.com.lno.androidmvvm.domain.model
 
 data class ToDo(
     val id: Int,

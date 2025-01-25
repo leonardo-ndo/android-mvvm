@@ -1,6 +1,6 @@
 package br.com.lno.androidmvvm.di
 
-import br.com.lno.androidmvvm.model.retrofit.ToDoAPI
+import br.com.lno.androidmvvm.data.retrofit.ToDoAPI
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

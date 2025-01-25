@@ -1,6 +1,6 @@
-package br.com.lno.androidmvvm.model.retrofit
+package br.com.lno.androidmvvm.data.retrofit
 
-import br.com.lno.androidmvvm.model.ToDo
+import br.com.lno.androidmvvm.domain.model.ToDo
 import retrofit2.Response
 import retrofit2.http.GET
 

@@ -1,4 +1,4 @@
-package br.com.lno.androidmvvm.model.retrofit
+package br.com.lno.androidmvvm.data.retrofit
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
